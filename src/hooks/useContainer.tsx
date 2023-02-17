@@ -1,5 +1,5 @@
 import React, {useCallback, useContext} from 'react';
-import {ConstructorValue, DependencyContainer, diContainer} from '../helpers/dependencyContainer';
+import {ConstructorValue, DependencyContainer} from '../helpers/dependencyContainer';
 
 /** Контейнер зависимотей
  * @param cons - Класс зависимости
@@ -22,7 +22,7 @@ interface IContainerEventAdapter<T extends new () => any> {
 
 type UseContainerHookResult<T extends new () => any> = [ConstructorValue<T>, IContainerEventAdapter<T>, () => void];
 
-export const ContainerContext = React.createContext<DependencyContainer>(diContainer);
+export const ContainerContext = React.createContext<DependencyContainer>(new DependencyContainer());
 
 /**
  * Возвращает кортеж из 3 элементов
