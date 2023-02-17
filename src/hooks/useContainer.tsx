@@ -1,5 +1,5 @@
 import React, {useCallback, useContext} from 'react';
-import {ConstructorValue, DependencyContainer} from '../helpers/dependencyContainer';
+import {ConstructorValue, DependencyContainer, diContainer} from '../helpers/dependencyContainer';
 
 /** Контейнер зависимотей
  * @param cons - Класс зависимости
@@ -22,7 +22,7 @@ interface IContainerEventAdapter<T extends new () => any> {
 
 type UseContainerHookResult<T extends new () => any> = [ConstructorValue<T>, IContainerEventAdapter<T>, () => void];
 
-export const ContainerContext = React.createContext<DependencyContainer>(new DependencyContainer());
+export const ContainerContext = React.createContext<DependencyContainer>(diContainer);
 
 /**
  * Возвращает кортеж из 3 элементов
@@ -37,13 +37,13 @@ export const ContainerContext = React.createContext<DependencyContainer>(new Dep
  * Третий элемент это dispose функция, которая позволяет отписаться и удалить экземпляр класса из контейнера
  */
 
-export function useContainer<T extends new (...args: any) => any>(
+export const useContainer = <T extends new (...args: any) => any>(
     cons: T,
     scope = 'default',
-): UseContainerHookResult<T> {
+): UseContainerHookResult<T> => {
     const ctx = useContext(ContainerContext);
 
     const on: IContainerEventAdapter<T> = useCallback((eventName, fn) => ctx.on(eventName, fn), [ctx]);
 
     return [ctx.get(cons, scope), on, () => ctx.unregister(cons, scope)];
-}
+};
