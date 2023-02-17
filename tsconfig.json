@@ -15,7 +15,7 @@
         "isolatedModules": true,
         "jsx": "react",
         "removeComments": true,
-        "outDir": "./src",
+        "outDir": "./dist",
         "baseUrl": "./src",
         "typeRoots": ["./types"],
         "experimentalDecorators": true
