@@ -14,7 +14,7 @@
     "url": "git+https://github.com/timepad/timepad-di.git"
   },
   "author": "Timepad",
-  "license": "UNLICENSED",
+  "license": "(MIT OR Apache-2.0)",
   "bugs": {
     "url": "https://github.com/timepad/timepad-di/issues"
   },
