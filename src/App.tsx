@@ -1,7 +1,6 @@
 import React from 'react';
 import {useContainer} from './hooks';
 
-//initDIContainer(new DependencyContainer());
 class Store1 {
     isAuth = false;
     setAuth() {
