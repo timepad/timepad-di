@@ -22,7 +22,9 @@ const [store, on, dispose] = useContainer(MyStore);
 ```tsx
 diContaner.get<T extends new (...args: any) => any>(cons: T, scope = 'default');
 
-constructor (private readonly store = diContainer.get(MyStore)) {},
+constructor () {
+    this.store = diContainer.get(MyStore)
+}
 ```
 
 `cons` – Класс стора.
